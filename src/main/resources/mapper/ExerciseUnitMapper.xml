@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byung8.fitness.exercise.mapper.ExerciseUnitMapper">
+
+	<select id="findExerciseUnit" parameterType="java.lang.String" resultType="com.byung8.fitness.domain.ExerciseUnit">
+		SELECT 
+			A.EXC_ID as exerciseId
+			, A.EXC_NM_ENG as exerciseEngName
+			, A.EXC_NM as exerciseName
+			, A.DSC as description
+			, A.UNIT_CAL_VAL as unitCalorie
+			, A.AMT_UNT_ID as amtUnitId
+			,(SELECT B.CMM_CD_NM FROM TB_CMM_CD B WHERE A.AMT_UNT_ID=B.CMM_CD_ID) as amtUnitName
+			, A.USE_YN as useYn
+			, A.REG_DT as regDate
+			, A.UDP_DT as udpDate
+		FROM TB_EXC_UNIT_CAL A
+		WHERE A.USE_YN = 'Y'
+		AND A.EXC_ID = '${value}'
+	</select>
+	
+	<select id="findByTypeName" parameterType="java.lang.String" resultType="com.byung8.fitness.domain.ExerciseUnit">
+		SELECT 
+			A.EXC_ID as exerciseId
+			, A.EXC_NM_ENG as exerciseEngName
+			, A.EXC_NM as exerciseName
+			, A.DSC as description
+			, A.UNIT_CAL_VAL as unitCalorie
+			, A.AMT_UNT_ID as amtUnitId
+			,(SELECT B.CMM_CD_NM FROM TB_CMM_CD B WHERE A.AMT_UNT_ID=B.CMM_CD_ID) as amtUnitName
+			, A.USE_YN as useYn
+			, A.REG_DT as regDate
+			, A.UDP_DT as udpDate
+		FROM TB_EXC_UNIT_CAL A
+		WHERE A.USE_YN = 'Y'
+		AND B.CMM_CD_NM LIKE CONCAT('%','${value}','%')
+	</select>
+
+	<select id="findByType" parameterType="java.lang.String" resultType="com.byung8.fitness.domain.ExerciseUnit">
+		SELECT 
+			A.EXC_ID as exerciseId
+			, A.EXC_NM_ENG as exerciseEngName
+			, A.EXC_NM as exerciseName
+			, A.DSC as description
+			, A.UNIT_CAL_VAL as unitCalorie
+			, A.AMT_UNT_ID as amtUnitId
+			,(SELECT B.CMM_CD_NM FROM TB_CMM_CD B WHERE A.AMT_UNT_ID=B.CMM_CD_ID) as amtUnitName
+			, A.USE_YN as useYn
+			, A.REG_DT as regDate
+			, A.UDP_DT as udpDate
+		FROM TB_EXC_UNIT_CAL A
+		WHERE A.USE_YN = 'Y'
+		AND A.AMT_UNT_ID = '${value}'
+	</select>
+
+	<select id="findByName" parameterType="java.lang.String" resultType="com.byung8.fitness.domain.ExerciseUnit">
+		SELECT 
+			A.EXC_ID as exerciseId
+			, A.EXC_NM_ENG as exerciseEngName
+			, A.EXC_NM as exerciseName
+			, A.DSC as description
+			, A.UNIT_CAL_VAL as unitCalorie
+			, A.AMT_UNT_ID as amtUnitId
+			,(SELECT B.CMM_CD_NM FROM TB_CMM_CD B WHERE A.AMT_UNT_ID=B.CMM_CD_ID) as amtUnitName
+			, A.USE_YN as useYn
+			, A.REG_DT as regDate
+			, A.UDP_DT as udpDate
+		FROM TB_EXC_UNIT_CAL A
+		WHERE A.USE_YN = 'Y'
+		AND A.EXC_NM LIKE CONCAT('%','${value}','%')
+	</select>
+	
+	<select id="findAll" resultType="com.byung8.fitness.domain.ExerciseUnit">
+		SELECT 
+			A.EXC_ID as exerciseId
+			, A.EXC_NM_ENG as exerciseEngName
+			, A.EXC_NM as exerciseName
+			, A.DSC as description
+			, A.UNIT_CAL_VAL as unitCalorie
+			, A.AMT_UNT_ID as amtUnitId
+			,(SELECT B.CMM_CD_NM FROM TB_CMM_CD B WHERE A.AMT_UNT_ID=B.CMM_CD_ID) as amtUnitName
+			, A.USE_YN as useYn
+			, A.REG_DT as regDate
+			, A.UDP_DT as udpDate
+		FROM TB_EXC_UNIT_CAL A
+		WHERE A.USE_YN = 'Y'
+	</select>
+	
+</mapper>

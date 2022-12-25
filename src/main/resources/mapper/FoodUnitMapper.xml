@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.byung8.fitness.exercise.mapper.FoodUnitMapper">
+
+	<select id="findByType" parameterType="java.lang.String" resultType="com.byung8.fitness.domain.FoodUnit">
+		SELECT
+		  A.FS_ID as foodUnitId
+		  , A.FS_VAL as foodValue
+		  , A.FS_NM_ENG as foodUnitEngName
+		  , A.FS_NM as foodUnitName
+		  , A.FS_DTL as descrition
+		  , A.CD_PRFX_ID as prefixCodedId
+		  , (SELECT B.CMM_CD_NM FROM TB_CMM_CD B WHERE B.CMM_CD_ID=A.CD_PRFX_ID) as prefixCodeName
+		  , A.FS_TP_ID as foodTypeId
+		  , (SELECT B.CMM_CD_NM FROM TB_CMM_CD B WHERE B.CMM_CD_ID=A.FS_TP_ID) as foodTypeName
+		  , A.BS_UNT_VAL as baseUnitValue
+		  , A.FS_UNT_VAL as UnitQuantity
+		  , A.USE_YN as useYn
+		  , A.REG_DT as regDate
+		  , A.UDP_DT as udpDate
+		FROM TB_FS_UNIT A
+		WHERE A.USE_YN='Y'
+		AND A.CD_PRFX_ID='${value}'
+	</select>
+	
+	<select id="findByTypeName" parameterType="java.lang.String" resultType="com.byung8.fitness.domain.FoodUnit">
+		SELECT
+		  A.FS_ID as foodUnitId
+		  , A.FS_VAL as foodValue
+		  , A.FS_NM_ENG as foodUnitEngName
+		  , A.FS_NM as foodUnitName
+		  , A.FS_DTL as descrition
+		  , A.CD_PRFX_ID as prefixCodedId
+		  , (SELECT B.CMM_CD_NM FROM TB_CMM_CD B WHERE B.CMM_CD_ID=A.CD_PRFX_ID) as prefixCodeName
+		  , A.FS_TP_ID as foodTypeId
+		  , (SELECT B.CMM_CD_NM FROM TB_CMM_CD B WHERE B.CMM_CD_ID=A.FS_TP_ID) as foodTypeName
+		  , A.BS_UNT_VAL as baseUnitValue
+		  , A.FS_UNT_VAL as UnitQuantity
+		  , A.USE_YN as useYn
+		  , A.REG_DT as regDate
+		  , A.UDP_DT as udpDate
+		FROM TB_FS_UNIT A
+		WHERE A.USE_YN='Y'
+		AND B.CMM_CD_NM LIKE CONCAT('%','${value}','%')
+	</select>
+	
+	<select id="findByName" parameterType="java.lang.String" resultType="com.byung8.fitness.domain.FoodUnit">
+		SELECT
+		  A.FS_ID as foodUnitId
+		  , A.FS_VAL as foodValue
+		  , A.FS_NM_ENG as foodUnitEngName
+		  , A.FS_NM as foodUnitName
+		  , A.FS_DTL as descrition
+		  , A.CD_PRFX_ID as prefixCodedId
+		  , (SELECT B.CMM_CD_NM FROM TB_CMM_CD B WHERE B.CMM_CD_ID=A.CD_PRFX_ID) as prefixCodeName
+		  , A.FS_TP_ID as foodTypeId
+		  , (SELECT B.CMM_CD_NM FROM TB_CMM_CD B WHERE B.CMM_CD_ID=A.FS_TP_ID) as foodTypeName
+		  , A.BS_UNT_VAL as baseUnitValue
+		  , A.FS_UNT_VAL as UnitQuantity
+		  , A.USE_YN as useYn
+		  , A.REG_DT as regDate
+		  , A.UDP_DT as udpDate
+		FROM TB_FS_UNIT A
+		WHERE A.USE_YN='Y'
+		AND A.FS_NM LIKE CONCAT('%','${value}','%')
+	</select>
+
+	<select id="findFoodUnit" parameterType="java.lang.String" resultType="com.byung8.fitness.domain.FoodUnit">
+		SELECT
+		  A.FS_ID as foodUnitId
+		  , A.FS_VAL as foodValue
+		  , A.FS_NM_ENG as foodUnitEngName
+		  , A.FS_NM as foodUnitName
+		  , A.FS_DTL as descrition
+		  , A.CD_PRFX_ID as prefixCodedId
+		  , (SELECT B.CMM_CD_NM FROM TB_CMM_CD B WHERE B.CMM_CD_ID=A.CD_PRFX_ID) as prefixCodeName
+		  , A.FS_TP_ID as foodTypeId
+		  , (SELECT B.CMM_CD_NM FROM TB_CMM_CD B WHERE B.CMM_CD_ID=A.FS_TP_ID) as foodTypeName
+		  , A.BS_UNT_VAL as baseUnitValue
+		  , A.FS_UNT_VAL as UnitQuantity
+		  , A.USE_YN as useYn
+		  , A.REG_DT as regDate
+		  , A.UDP_DT as udpDate
+		FROM TB_FS_UNIT A
+		WHERE A.USE_YN='Y'
+		AND A.FS_ID = '${value}'
+	</select>
+	
+	<select id="findAll" resultType="com.byung8.fitness.domain.FoodUnit">
+		SELECT
+		  A.FS_ID as foodUnitId
+		  , A.FS_VAL as foodValue
+		  , A.FS_NM_ENG as foodUnitEngName
+		  , A.FS_NM as foodUnitName
+		  , A.FS_DTL as descrition
+		  , A.CD_PRFX_ID as prefixCodedId
+		  , (SELECT B.CMM_CD_NM FROM TB_CMM_CD B WHERE B.CMM_CD_ID=A.CD_PRFX_ID) as prefixCodeName
+		  , A.FS_TP_ID as foodTypeId
+		  , (SELECT B.CMM_CD_NM FROM TB_CMM_CD B WHERE B.CMM_CD_ID=A.FS_TP_ID) as foodTypeName
+		  , A.BS_UNT_VAL as baseUnitValue
+		  , A.FS_UNT_VAL as UnitQuantity
+		  , A.USE_YN as useYn
+		  , A.REG_DT as regDate
+		  , A.UDP_DT as udpDate
+		FROM TB_FS_UNIT A
+		WHERE A.USE_YN='Y'
+	</select>
+	
+</mapper>

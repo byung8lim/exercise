@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: exercise
+  name: exercise
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: exercise
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: exercise
+    spec:
+      containers:
+      - image: REGISTRY_URL/fitness/exercise:latest
+        name: exercise
+        env:
+        - name: DB_URI
+          value: mysql:3306
+        - name: DB_USER_NAME
+          value: byung8
+        - name: DB_USER_PASSWORD
+          value: 1q2w3e4r5t
+        resources: {}
+status: {}
+---
