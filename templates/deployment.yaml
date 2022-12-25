@@ -20,6 +20,9 @@ spec:
       containers:
       - image: REGISTRY_URL/fitness/exercise:latest
         name: exercise
+        volumeMounts:
+        - mountPath: /etc/localtime
+          name: tz-seoul
         env:
         - name: DB_URI
           value: mysql:3306
@@ -28,5 +31,10 @@ spec:
         - name: DB_USER_PASSWORD
           value: 1q2w3e4r5t
         resources: {}
+      volumes:
+      - hostPath:
+          path: /usr/share/zoneinfo/Asia/Seoul
+          type: ""
+        name: tz-seoul
 status: {}
 ---
