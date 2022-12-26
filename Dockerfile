@@ -15,4 +15,4 @@ COPY target/exercise-0.0.1-SNAPSHOT.jar /exercise/app.jar
 RUN chown -R byung8:byung8 /exercise
 USER byung8
 
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar",-Dspring.profiles.active=prod","/exercise/app.jar"]
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","-Dspring.profiles.active=prod","/exercise/app.jar"]
