@@ -18,7 +18,7 @@ spec:
         app: exercise
     spec:
       containers:
-      - image: REGISTRY_URL/fitness/exercise:latest
+      - image: harbor.domain.local/fitness/exercise:latest
         name: exercise
         volumeMounts:
         - mountPath: /etc/localtime
