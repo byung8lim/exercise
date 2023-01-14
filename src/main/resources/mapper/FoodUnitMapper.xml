@@ -21,7 +21,7 @@
 		  , A.UDP_DT as udpDate
 		FROM TB_FS_UNIT A
 		WHERE A.USE_YN='Y'
-		AND A.CD_PRFX_ID='${value}'
+		AND A.FS_TP_ID='${value}'
 	</select>
 	
 	<select id="findByTypeName" parameterType="java.lang.String" resultType="com.byung8.fitness.domain.FoodUnit">
