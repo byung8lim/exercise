@@ -26,7 +26,7 @@ public class FoodUnitController {
 		return UUID.randomUUID().toString();
 	}
 
-	@RequestMapping(value = "/food/all", method = RequestMethod.GET)
+	@RequestMapping(value = "/foodunit/all", method = RequestMethod.GET)
 	public ResponseEntity<String> getAll() {
 
 		String txid = txId();
@@ -46,7 +46,7 @@ public class FoodUnitController {
 		}
 	}
 	
-	@RequestMapping(value = "/food/{typeId}/type", method = RequestMethod.GET)
+	@RequestMapping(value = "/foodunit/{typeId}/type", method = RequestMethod.GET)
 	public ResponseEntity<String> getByTypeId(@PathVariable("typeId") final String typeId) {
 
 		String txid = txId();
@@ -66,7 +66,7 @@ public class FoodUnitController {
 		}
 	}
 	
-	@RequestMapping(value = "/food/{typeName}/typename", method = RequestMethod.GET)
+	@RequestMapping(value = "/foodunit/{typeName}/typename", method = RequestMethod.GET)
 	public ResponseEntity<String> getByTypeName(@PathVariable("typeName") final String typeName) {
 
 		String txid = txId();
@@ -86,7 +86,7 @@ public class FoodUnitController {
 		}
 	}
 	
-	@RequestMapping(value = "/food/{name}/name", method = RequestMethod.GET)
+	@RequestMapping(value = "/foodunit/{name}/name", method = RequestMethod.GET)
 	public ResponseEntity<String> getByName(@PathVariable("name") final String name) {
 
 		String txid = txId();
@@ -106,7 +106,7 @@ public class FoodUnitController {
 		}
 	}
 	
-	@RequestMapping(value = "/food/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/foodunit/{id}", method = RequestMethod.GET)
 	public ResponseEntity<String> getFoodUnit(@PathVariable("id") final String id) {
 
 		String txid = txId();
