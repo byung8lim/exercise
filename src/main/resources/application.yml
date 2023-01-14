@@ -53,6 +53,7 @@ server:
       enabled: true
     basedir: "/exercise"
   servlet:
+    context-path: /exercise
     encoding:
       charset: UTF-8
       enabled: true
@@ -82,6 +83,7 @@ server:
       enabled: true
     basedir: "C://dev/work/fitness/exercise"
   servlet:
+    context-path: /exercise
     encoding:
       charset: UTF-8
       enabled: true
