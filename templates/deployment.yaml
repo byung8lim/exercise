@@ -18,7 +18,7 @@ spec:
         app: exercise
     spec:
       containers:
-      - image: harbor.wbl.com/fitness/exercise:BLDID230114-192347
+      - image: harbor.wbl.com/fitness/exercise:BLDID230114-210149
         name: exercise
         volumeMounts:
         - mountPath: /etc/localtime
