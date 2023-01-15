@@ -1,27 +1,27 @@
-# mydiet server
-docker build -t kong-gw.bd.com:5000/fitness/mydiet:latest .
+# exercise server
+docker build -t kong-gw.bd.com:5000/fitness/exercise:latest .
 
-docker push kong-gw.bd.com:5000/fitness/mydiet:latest
+docker push kong-gw.bd.com:5000/fitness/exercise:latest
 
 docker run -d -p 8083:8080 --restart=always --name fitness-mydiet \
 -e DB_URI=10.10.50.2:3306 \
 -e DB_USER_NAME=byung8 \
 -e DB_USER_PASSWORD=1q2w3e4r5t \
 -v /etc/localtime:/etc/localtime \
--v /data/fitness/mydiet/logs:/data/fitness/mydiet/logs \
-kong-gw.bd.com:5000/fitness/mydiet:latest
+-v /exercise/logs:/exercise/logs \
+kong-gw.bd.com:5000/fitness/exercise:latest
 
 # Tomcat accesslog format
 %a - Remote IP address
 %A - Local IP address
-%b - Bytes sent, excluding HTTP headers, or ¡®-¡® if no bytes were sent
+%b - Bytes sent, excluding HTTP headers, or Â¡Â®-Â¡Â® if no bytes were sent
 %B - Bytes sent, excluding HTTP headers
 %h - Remote host name (or IP address if enableLookups for the connector is false)
 %H - Request protocol
-%l - Remote logical username from identd (always returns ¡®-¡®)
+%l - Remote logical username from identd (always returns Â¡Â®-Â¡Â®)
 %m - Request method
 %p - Local port
-%q - Query string (prepended with a ¡®?¡¯ if it exists, otherwise an empty string
+%q - Query string (prepended with a Â¡Â®?Â¡Â¯ if it exists, otherwise an empty string
 %r - First line of the request
 %s - HTTP status code of the response
 %S - User session ID
